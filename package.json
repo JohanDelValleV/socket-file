@@ -1,0 +1,26 @@
+{
+  "name": "socket",
+  "version": "1.0.0",
+  "description": "Servidor TCP/IP",
+  "main": "servidor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node sevidor.js"
+  },
+  "author": "Johan Del Valle",
+  "license": "MIT",
+  "dependencies": {
+    "express": "~4.16.4",
+    "filereader": "^0.10.3",
+    "http": "0.0.0",
+    "net": "^1.0.2",
+    "os": "^0.1.1",
+    "socket.io": "~2.2.0",
+    "socket.io-client": "^2.2.0",
+    "socket.io-file": "^2.0.31",
+    "socket.io-file-client": "^2.0.2"
+  },
+  "engines": {
+    "node": "10.x"
+  }
+}
