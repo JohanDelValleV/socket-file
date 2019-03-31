@@ -4,24 +4,17 @@
 	<title>Socket.io-file 2.x File Upload Example</title>
 </head>
 <body>
+	<a href="" id="link"></a>
 	<div>
-		<h1>Link</h1>
-		<a href="" id="link">Link</a>
-		<button id="link">Download</button>
-		
+		<form id="form">
+			<input type="file" id="file" multiple />
+			<input type="submit" value="Upload" />
+		</form>	
 	</div>
+	
 	<div>
-		Enter a text and click the button: <input type="text" id="content" value="Text for the generated pdf">
-		<button id="download">Send AJAX Request and download file</button>
+		<button id="download">Download</button>
 	</div>
-	<h1>Socket.io-file 2.x File Upload Example</h1>
-	<p>Select file and click upload button to upload.</p>
-	<p>Multiple upload also supports.</p>
-
-	<form id="form">
-		<input type="file" id="file" multiple />
-		<input type="submit" value="Upload" />
-	</form>
 
 	<script src="socket.io.js"></script>
 	<script src="socket.io-file-client.js"></script>
@@ -29,7 +22,8 @@
 	<script>
 	document.getElementById('download').addEventListener('click', function () {
 		var liga = document.getElementById('link').href;
-		var content = document.getElementById('content').value;
+		// document.getElementById('link').setAttribute('class')
+		var content = '';
 		var request = new XMLHttpRequest();
 		request.open('GET', liga, true);
 		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
@@ -40,12 +34,10 @@
 		  if(request.status === 200) {
 			// Try to find out the filename from the content disposition `filename` value
 			var disposition = request.getResponseHeader('content-disposition');
-			var name = document.getElementById('link').href.innerHTML;
-			name.split("http://localhost:3000/data/");
-			console.log(name);
 			var matches = /"([^"]*)"/.exec(disposition);
+			var name = document.getElementById('link').getAttribute('href').split('data/')
 			var filename = (matches != null && matches[1] ? matches[1] : name);
-	
+			
 			// The actual download
 			var blob = new Blob([request.response]);
 			var link = document.createElement('a');

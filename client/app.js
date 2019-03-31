@@ -20,6 +20,7 @@ uploader.on('stream', function(fileInfo) {
 uploader.on('complete', function(fileInfo) {
 	console.log('Upload Complete', fileInfo);
 	var link = document.getElementById('link').href = "data/"+fileInfo.name;
+	console.log(link)
 });
 uploader.on('error', function(err) {
 	console.log('Error!', err);
